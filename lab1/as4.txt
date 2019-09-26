@@ -1,0 +1,10 @@
+If we have $a0 as -1 then we will get stuck in an infinite loop
+because our while-loop variable will never be equal to zero.
+Ideally we should have some check in our delay function to ensure
+the input parameter is actually greater than (or equal to) zero
+to avoid this problem.
+
+If we have $a0 as 0 then the delay will be ms = 0, i.e. no delay.
+The delay function will be called but we will never enter the while loop.
+
+

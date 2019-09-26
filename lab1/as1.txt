@@ -1,0 +1,11 @@
+Line 7: 0x30 is 48 in base 10, which is the ASCII-code for the number 0.
+
+Line 8: loop is initiated where the number 48 (0x30) is copied to $a0, and then we print out one byte from a0 to the I/O window.
+
+Line 14: We increment $s0 by one so that next time the loop runs we will be printing the character associated with ASCII-code 48 + 1 = 49 etc.
+
+Line 16: In the first loop iteration we load register $t0 with the value 0x5b, and so long as $s0 does not equal the value in register $t0 (i.e. 0x5b), we will continue the loop (this is called branching - branch taken or branch not taken).
+
+So to print out every third character we must change the immediate on line 14 from being 1 to being 3. That way we will be printing only every third character in the ASCII table starting from ASCII code 48.
+
+But if we just do that then this loop will run forever, because the value in register $t0 (which is 0x5b, i.e. 91) will never be equal to 48 + 3*x ... for any integer x. But if we change the value in $t0 to 0x5d (i.e. 93), then it will be equal to it eventually and the program will halt.

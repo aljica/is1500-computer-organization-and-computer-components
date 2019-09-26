@@ -1,0 +1,5 @@
+- No s-registers are used and no registers are saved
+
+- We do bit masking, leaving us with only 4 bits from the input value. Max value is thus 1111 (base 2) which corresponds to value 15 (base 10).
+
+- We do use a conditional-branch instruction, as given by lines 34 - 36. If the value in $a0 (input argument) is greater than 9 (found in $t0), then $t1 contains a 1 and in line 36 we branch off to overten given that condition.

@@ -1,0 +1,76 @@
+Assignment 1 question 1:
+
+A AND B gives us the output value Y. 
+
+Depending on how we choose the select signal F
+different operations will be performed.
+
+The AND and OR operations are performed in every ALU cycle,
+and then we choose which operation is to be performed in
+the MUX.
+
+Subtraction works quite simply by first inverting
+all the bits in one of the inputs, and then proceeding
+by performing regular binary addition.
+
+So A - B is calculated by first inverting the bits of B and then performing the operation A + B with the adder.
+
+Question 2:
+
+We simply use XNOR (XOR would output 0 if both inputs were 0, so we use the inverted result of that - XNOR) to check that all the bits that come from Y are 0.
+
+Question 3:
+
+It performs calculations and it is a vital part of the CPU.
+
+Several functions are grouped into this one component so that we don't need several different constructions to perform different tasks. We don't want to separate addition and subtraction into 2 different components fo rthe sake of simplicity: its easier to just re-use the construction that we already have.
+
+----
+
+as 2 qu 1:
+
+The read operation is clocked  but not the write op.
+
+qu 2:
+
+When reading from 0, we simply read 0.
+When writing to 0, we dont write anything (0).
+
+It is implemented by making the mem address in the $0 reg be zero.
+
+qu 3:
+
+7 * 32 bits = 224 bits
+
+It should be the same (?) because the address width is the same as for the 32 bit mips processor
+
+----
+
+
+assignment 3 qu 1:
+
+Först kollar vi om opcoden är 4, om den är det så ändrar vi ALU control till 110 (för subtraktion) och ändrar branch till 1.
+
+Subtraktionen utförs för att ALU:n ska kolla om A-B= 0. 
+
+
+Vi skiftar bitarna 26 steg till höger för att få fram de 6 MSBitarna
+
+qu 2:
+
+thru alusrc we can choose if we're using an immediate or a certain register (which register depends on what we have in A2).
+
+(Beroende på om vi kör en I-type instruction eller inte):
+Bitar 25:21 och 20:16 skickas in till A1 och A2 oavsett, och handskas vi med en I-type instruction så behöver vi ju inte bitarna 15:11 (som specificerar register rd). Istället har vi RegDst = 0 så vi hämtar inte ytterligare ett register (för vi kommer använda en immediate, se MIPS ref sheet).
+
+----
+
+assignment 4 question 1:
+
+The bit selection depends on which instruction type we're dealing with. 
+
+For an i-type instruction we want bits 20:16 and
+and for an r-type instruction we want bits 15:11 (13:11 because we only take 3 bits) (see mips ref sheet). 
+
+question 2: W
+

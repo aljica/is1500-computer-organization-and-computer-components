@@ -1,0 +1,16 @@
+1) Because we are sending a copy of m into the function fun(int param). We are passing by value, not by reference. Passing by value means we create a copy of the value of the variable.
+As a result, m remains intact (m = 8), whereas gv is assigned the value param (gv = param) *after* param is incremented by 1 (remember param = the value of m upon calling fun()).
+
+2) The size of the cp pointer should be 9 bytes because it points to cs[9]. cs[9] = "Bonjour!", this is 8 chars but we need a ninth char for the "terminate string" \0 byte.
+
+3) A C string is laid out in memory as follows: all ASCII chars part of the string take up 1 byte each in memory. A pointer points only to the first ASCII char of the string, and then
+continues following along the path of memory until it reaches a \0 "terminate string" byte, at which point we know it's the end of the string.
+
+As it currently stands, we have declared the cp pointer to point to a string of 9 characters (we have hard-coded the number 9), so the string cp points to must be 9 bytes long.
+
+4) fun has address 9D002748, which according to the PIC32 memory map belongs to the reserved memory space of "program flash".
+main has similar address space as fun, meaning it also belongs to the reserved memory space known as "program flash".
+
+They are stored in flash memory.
+
+What is the meaning of the data that these symbols point to? Answer: Is it the corresponding machine code of what the functions do (perform)?
